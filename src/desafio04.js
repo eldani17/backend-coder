@@ -26,7 +26,8 @@ let products = [
     thumbnail: "url....1",
   },
 ];
-let idProduct = 4;
+
+let idProduct = products.length + 1;
 
 const routerProducts = new Router();
 
@@ -62,19 +63,31 @@ routerProducts.post("/", (req, res) => {
 
 routerProducts.put("/:id", (req, res) => {
   let { title, price, thumbnail } = req.body;
-  const id = req.params.id - 1;
-  title = title ? title : products[id].title;
-  price = price ? price : products[id].price;
-  thumbnail = thumbnail ? thumbnail : products[id].thumbnail;
-  products[id] = { ...products[id], title, price, thumbnail };
+  const id = req.params.id;
+  const idx = products.findIndex((element) => element.id == id);
 
-  res.status(200).json({ actualizada: products[id] });
+  if (idx === -1) {
+    res.status(200).json({ error: `producto no encontrado con id: ${id}` });
+  } else {
+    title = title ? title : products[idx].title;
+    price = price ? price : products[idx].price;
+    thumbnail = thumbnail ? thumbnail : products[idx].thumbnail;
+    products[idx] = { ...products[idx], title, price, thumbnail };
+
+    res.status(200).json({ actualizada: products[idx] });
+  }
 });
 
 routerProducts.delete("/:id", (req, res) => {
-  const id = req.params.id - 1;
-  products.splice(id, 1);
-  res.status(200).json({ borrada });
+  const id = req.params.id;
+  const idx = products.findIndex((element) => element.id == id);
+
+  if (idx === -1) {
+    res.status(200).json({ error: `producto no encontrado con id: ${id}` });
+  } else {
+    products.splice(idx, 1);
+    res.status(200).json({ msg: "producto borrado" });
+  }
 });
 
 const PORT = 8081;
