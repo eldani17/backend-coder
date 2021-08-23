@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Mac",
+    "price": "1500",
+    "thumbnail": "https://cdn4.iconfinder.com/data/icons/MacBook_Pro/128/snow_leopard.png",
+    "id": 1
+  },
+  {
+    "title": "Computador",
+    "price": "200",
+    "thumbnail": "https://cdn0.iconfinder.com/data/icons/devices-flat-1/100/macbook_pro_flat-128.png",
+    "id": 2
+  },
+  {
+    "title": "",
+    "price": "",
+    "thumbnail": "",
+    "id": 3
+  },
+  {
+    "title": "",
+    "price": "",
+    "thumbnail": "",
+    "id": 4
+  }
+]
