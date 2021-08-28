@@ -1,0 +1,38 @@
+[
+  {
+    "email": "email@email.com",
+    "message": "Hola Mundo",
+    "date": "28/71/2021 11:31:2",
+    "id": 1
+  },
+  {
+    "email": "pepito@gmail.com",
+    "message": "pepito el pistolero",
+    "date": "28/71/2021 11:32:21",
+    "id": 2
+  },
+  {
+    "email": "pepito@gmail.com",
+    "message": "pepito el pistolero",
+    "date": "28/71/2021 11:32:23",
+    "id": 3
+  },
+  {
+    "email": "lala@gmail.com",
+    "message": "pepepepepe",
+    "date": "28/71/2021 11:33:13",
+    "id": 4
+  },
+  {
+    "date": "28/71/2021 11:43:20",
+    "id": 5
+  },
+  {
+    "date": "28/71/2021 11:43:21",
+    "id": 6
+  },
+  {
+    "date": "28/71/2021 11:43:26",
+    "id": 7
+  }
+]
