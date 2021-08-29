@@ -59,6 +59,11 @@ h1 {
   width: 200px;
 }
 
+.img-thumbnail {
+  height: 100px;
+  width: 100px;
+}
+
 .row {
   border-bottom: 1px solid black;
 }
@@ -79,4 +84,31 @@ h1 {
   color: #fef4cd;
   font-size: 20px;
   border: none;
+}
+
+/* .container-messages {
+  display: flex;
+  justify-content: center;
+  max-width: 80%;
+  margin-top: 30px;
+  width: 100%;
+} */
+
+.card-messages {
+  background-color: #e9ecef;
+  width: 100%;
+}
+
+.message-email {
+  font-weight: bold;
+  color: blue;
+}
+
+.message-date {
+  color: brown;
+}
+
+.message-text {
+  color: green;
+  font-style: italic;
 }

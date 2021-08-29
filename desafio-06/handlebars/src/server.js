@@ -1,17 +1,58 @@
 const express = require("express");
+const emoji = require("node-emoji");
 const handlebars = require("express-handlebars");
+const { Server: HttpServer } = require("http");
+const { Server: IOServer } = require("socket.io");
+
 const moduleContenedor = require("./contenedor");
 
 const app = express();
+const httpServer = new HttpServer(app);
+const io = new IOServer(httpServer, {
+  cors: {
+    origin: "http://localhost:3000",
+  },
+});
 
 let contenedor = new moduleContenedor.Contenedor(__dirname + "/productos.txt");
+let fileMessages = new moduleContenedor.Contenedor(__dirname + "/messages.txt");
 
-// const fs = require("fs");
-const data = [
-  { nombre: "nombre 1" },
-  { nombre: "nombre 2" },
-  { nombre: "nombre 3" },
-];
+//iniciamos el websocket
+io.on("connection", async (socket) => {
+  console.log(emoji.get("pizza"), "usuario conectado");
+
+  const messages = await fileMessages.getAll();
+
+  socket.emit("messageBackend", messages);
+
+  socket.on("disconnect", () => {
+    console.log(emoji.get("fire"), "Usuario desconectado");
+  });
+
+  socket.on("messageFront", async (data) => {
+    console.log("data Front", data);
+    const { email, message } = data;
+    const date = new Date();
+    const currentDateFormat =
+      date.getDate() +
+      "/" +
+      date.getMonth() +
+      1 +
+      "/" +
+      date.getFullYear() +
+      " " +
+      date.getHours() +
+      ":" +
+      date.getMinutes() +
+      ":" +
+      date.getSeconds();
+
+    const currentMessage = { email, message, date: currentDateFormat };
+    const id = await fileMessages.saveProduct(currentMessage);
+    messages.push(currentMessage);
+    io.sockets.emit("messageBackend", messages);
+  });
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -50,4 +91,4 @@ app.post("/productos", async (req, res) => {
   res.redirect("/");
 });
 
-app.listen(8080, () => console.log("Server started on 8080"));
+httpServer.listen(8080, () => console.log("Server started on 8080"));
