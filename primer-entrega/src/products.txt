@@ -1,0 +1,31 @@
+[
+  {
+    "name": "product 6",
+    "description": "descriptcion 6",
+    "code": "code 6",
+    "thumbnail": "url....6",
+    "price": "6",
+    "stock": "6",
+    "id": 1112
+  },
+  {
+    "timestamp": 1630851702483,
+    "name": "product 7",
+    "description": "descriptcion 7",
+    "code": "code 7",
+    "thumbnail": "url....7",
+    "price": "7",
+    "stock": "7",
+    "id": 1113
+  },
+  {
+    "timestamp": 1630851725954,
+    "name": "product 8",
+    "description": "descripcion 8888888888",
+    "code": "code 8",
+    "thumbnail": "url....8",
+    "price": "8",
+    "stock": "8",
+    "id": 1114
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "products": [
+      {
+        "id": "2",
+        "name": "product 8",
+        "description": "descriptcion 8",
+        "code": "code 8",
+        "thumbnail": "url....8",
+        "price": "8",
+        "stock": "8"
+      },
+      {
+        "id": "3",
+        "name": "product 8",
+        "description": "descriptcion 8",
+        "code": "code 8",
+        "thumbnail": "url....8",
+        "price": "8",
+        "stock": "8"
+      }
+    ],
+    "id": 2
+  },
+  {
+    "products": [],
+    "id": 3
+  },
+  {
+    "products": [],
+    "id": 4
+  },
+  {
+    "products": [],
+    "id": 5
+  }
+]
