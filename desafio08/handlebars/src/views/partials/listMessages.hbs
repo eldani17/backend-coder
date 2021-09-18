@@ -1,0 +1,57 @@
+<div class="">
+  <div class="card-messages">
+    <h1>Centro de Mensajes</h1>
+    <input
+      type="text"
+      placeholder="ingrese el email"
+      id="email"
+    />
+    <hr />
+    <div class="container-messages" id="messages">
+    </div>
+    <input
+      type="text"
+      placeholder="ingresá un mensaje"
+      id="message"
+    />
+    <button
+      id="send"
+    >
+      Enviar
+    </button>
+  </div>
+</div>
+
+<script>
+  const socket = io();
+  const email = document.getElementById("email");
+  const message = document.getElementById("message");
+  const send = document.getElementById("send");
+  const messages = document.getElementById("messages");
+
+  send.addEventListener("click", () => {
+    if (email.value !== '' && message.value !== ''){
+      const messageSend = {email: email.value, message: message.value};
+      socket.emit("messageFront", messageSend);
+      email.value = '';
+      message.value = '';
+    }else {
+      alert("El email y Mensaje deben ser completados");
+    }
+  });
+
+  socket.on("messageBackend", (data) => {
+    let inner = "";
+    data.map((element) => {
+      const {message, email, date} = element;
+      inner += `
+        <div class="card-message">
+          <span class="message-email">${email}</span>
+          <span class="message-date"> [${date}]</span>
+          <span class="message-text"> : ${message}</span>
+        </div>
+      `;
+    });
+    messages.innerHTML = inner;
+  });
+</script>

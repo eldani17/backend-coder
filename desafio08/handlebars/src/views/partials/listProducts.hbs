@@ -1,0 +1,23 @@
+<h1>Vista de productos</h1>
+
+{{#if existProducts}}
+    
+      <table>
+        <tr>
+            <th class="product">Producto</th>
+            <th class="price">Precio</th>
+            <th class="image">Imagen</th>
+        </tr>
+        {{#each products}}
+        <tr class="row">
+            <td class="product">{{this.title}}</td>
+            <td class="price">{{this.price}}</td>
+            <td class="image"><img class="img-thumbnail" src="{{this.thumbnail}}"></td>
+        </tr>
+        {{/each}}
+      </table>
+    
+{{else}} 
+  <div class="list-empty">no se encontraron productos en la lista</div>
+{{/if}}
+
