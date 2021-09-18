@@ -33,7 +33,7 @@ export default class ContenedorDB {
     } catch (error) {
       console.log("error", error);
     } finally {
-      this.db.destroy();
+      //this.db.destroy();
     }
   }
 
@@ -44,7 +44,7 @@ export default class ContenedorDB {
     } catch (error) {
       console.log(error);
     } finally {
-      this.db.destroy();
+      //this.db.destroy();
     }
   }
 
@@ -58,7 +58,7 @@ export default class ContenedorDB {
     } catch (error) {
       console.log(error);
     } finally {
-      this.db.destroy();
+      //this.db.destroy();
     }
   }
 
@@ -68,7 +68,7 @@ export default class ContenedorDB {
     } catch (error) {
       console.log(error);
     } finally {
-      this.db.destroy();
+      //this.db.destroy();
     }
   }
 
@@ -79,7 +79,7 @@ export default class ContenedorDB {
     } catch (error) {
       console.log(error);
     } finally {
-      this.db.destroy();
+      //this.db.destroy();
     }
   }
 
@@ -89,7 +89,7 @@ export default class ContenedorDB {
     } catch (error) {
       console.log(error);
     } finally {
-      this.db.destroy();
+      //this.db.destroy();
     }
   }
 }

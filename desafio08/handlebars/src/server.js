@@ -20,8 +20,6 @@ const io = new IOServer(httpServer, {
   },
 });
 
-// let contenedor = new Contenedor(__dirname + "/src/productos.txt");
-// let fileMessages = new Contenedor(__dirname + "/src/messages.txt");
 let productsDB = new ContenedorDB(config, "products");
 let messagesDB = new ContenedorDB(config, "messages");
 
@@ -31,31 +29,10 @@ let messagesDB = new ContenedorDB(config, "messages");
   await messagesDB.createTables();
 })();
 
-// (async function () {
-//   const response = await productsDB.getAll();
-//   console.log("resposne", response);
-// })();
-
-(async function () {
-  const element = { title: "lala", price: "111", thumbnail: "asdasd" };
-  //await productsDB.save(element);
-})();
-
-// (async function () {
-//   const element = { title: "titulo3", price: 333, id: 3 };
-//   //await productsDB.update(element);
-// })();
-
-// (async function () {
-//   //const element = { title: "titulo3", price: 333, id: 3 };
-//   //await productsDB.delete(1);
-// })();
-
 //iniciamos el websocket
 io.on("connection", async (socket) => {
   console.log(emoji.get("pizza"), "usuario conectado");
 
-  //const messages = await fileMessages.getAll();
   const messagesList = await messagesDB.getAll();
 
   socket.emit("messageBackend", messagesList);
@@ -65,7 +42,6 @@ io.on("connection", async (socket) => {
   });
 
   socket.on("messageFront", async (data) => {
-    console.log("data Front", data);
     const { email, message } = data;
     const date = new Date();
     const currentDateFormat =
@@ -112,9 +88,7 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/productos", async (req, res) => {
-  //const products = await productsDB.getAll();
-  const products = [];
-  console.log("products", products);
+  const products = await productsDB.getAll();
   const existProducts = products.length === 0 ? false : true;
   res.render("main", { products, viewList: true, existProducts });
 });
